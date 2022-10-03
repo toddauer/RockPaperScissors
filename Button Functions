@@ -1,0 +1,54 @@
+from tkinter import *
+import random
+
+root = Tk()
+root.title("Rock Paper Scissors")
+
+choices = ["rock", "paper", "scissors"]
+computer = random.choice(choices)
+
+# Button Functions
+# Runs when you click rock
+def clicked_Rock():
+    player = "rock"
+    if player == computer:
+        playerState = Label(root, text="Tie! You both chose rock!").grid(row=1, columnspan=3)
+    if computer == "scissors":
+        playerState = Label(root, text="You WIN! The computer chose " + computer).grid(row=1, columnspan=3)
+    if computer == "paper":
+        playerState = Label(root, text="You Lose! The computer chose " + computer).grid(row=1, columnspan=3)
+    clear()
+
+# Runs when you click paper
+def clicked_Paper():
+    player = "paper"
+    if player == computer:
+        playerState = Label(root, text="Tie! You both chose paper! " + computer).grid(row=1, columnspan=3)
+    if computer == "scissors":
+        playerState = Label(root, text="You Lose! The computer chose " + computer).grid(row=1, columnspan=3)
+    if computer == "rock":
+        playerState = Label(root, text="You WIN! The computer chose " + computer).grid(row=1, columnspan=3)
+    clear()
+
+# Runs when you click scissors
+def clicked_Scissors():
+    player = "scissors"
+    if player == computer:
+        playerState = Label(root, text="Tie! You both chose scissors!").grid(row=1, columnspan=3)
+    if computer == "paper":
+        playerState = Label(root, text="You WIN! The computer chose " + computer).grid(row=1, columnspan=3)
+    if computer == "rock":
+        playerState = Label(root, text="You Lose! The computer chose " + computer).grid(row=1, columnspan=3)
+    clear()
+
+# Resets the computers random choice
+def clear():
+    global computer
+    computer = random.choice(choices)
+
+
+# Define Buttons
+button_1 = Button(root, text="Rock", padx=20, command=clicked_Rock).grid(row=0, column=0)
+button_2 = Button(root, text="Paper", padx=20, command=clicked_Paper).grid(row=0, column=1)
+button_3 = Button(root, text="Scissors", padx=20, command=clicked_Scissors).grid(row=0, column=2)
+root.mainloop()
