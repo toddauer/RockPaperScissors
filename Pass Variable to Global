@@ -1,0 +1,67 @@
+from ast import Delete
+from tkinter import *
+import random 
+
+root = Tk()
+choices = ["rock", "paper", "scissors"]
+computer = random.choice(choices)
+result = ""
+def rock():
+    global result
+    result = "rock"
+    play()
+    clear()
+def paper():
+    global result
+    result = "paper"
+    play()
+    clear()
+def scissors():
+    global result
+    result = "scissors"
+    play()
+    clear()
+def win():
+    global myLabel
+    myLabel = Label(root, text="Win! Computer chose "+ computer).pack()
+def lose():
+    global myLabel
+    myLabel = Label(root, text="Lose! Computer chose "+ computer).pack()
+def tie():
+    global myLabel
+    myLabel = Label(root, text="Tie! You chose the same thing!").pack()
+def clear():
+    global computer
+    computer = random.choice(choices)
+
+button_1 = Button(root, text="rock", command=rock).pack()
+button_2 = Button(root, text="paper", command=paper).pack()
+button_3 = Button(root, text="scissors", command=scissors).pack()
+
+def play():
+    if result == computer:
+        print("tie")
+        tie()
+    elif result == "paper":
+        if computer == "rock":
+            print("win computer chose rock")
+            win()
+        if computer == "scissors":
+            print("lose computer chose scissors")
+            lose()
+    elif result == "scissors":
+        if computer == "rock":
+            print("lose computer chose rock")
+            lose()
+        if computer == "paper":
+            print("win computer chose paper")
+            win()
+    elif result == "rock":
+        if computer == "paper":
+            print("lose computer chose paper")
+            lose()
+        if computer == "scissors":
+            print("win computer chose scissors")
+            win()
+
+root.mainloop()
